@@ -5,18 +5,19 @@ class Player {
     }
 
     step = canvas.height/300;
+    r = 10;
 
-    goDown() { if (this.y + this.step <= canvas.height) this.y += this.step; }
+    goDown() { if (this.y + this.step <= canvas.height - this.r) this.y += this.step; }
 
-    goUp() { if (this.y + this.step >= 0) this.y -= this.step; }
+    goUp() { if (this.y + this.step >= this.r) this.y -= this.step; }
 
-    goLeft() { if (this.x + this.step >= 0) this.x -= this.step; }
+    goLeft() { if (this.x + this.step >= this.r) this.x -= this.step; }
 
-    goRight() { if (this.x + this.step <= canvas.width) this.x += this.step; }
+    goRight() { if (this.x + this.step <= canvas.width - this.r) this.x += this.step; }
 
     draw() {
         ctx.beginPath();
-        ctx.arc(this.x, this.y, 10, 0, 2 * Math.PI);
+        ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
         ctx.fillStyle = "black";
         ctx.fill();
         ctx.closePath();
